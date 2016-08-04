@@ -5,3 +5,4 @@ Gemfile.lock
 /*.deb
 /*.rpm
 *.swp
+.idea/
