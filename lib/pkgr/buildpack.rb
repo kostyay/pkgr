@@ -7,7 +7,13 @@ module Pkgr
       attr_writer :buildpacks_cache_dir
 
       def buildpacks_cache_dir
-        @buildpacks_cache_dir ||= File.expand_path("~/.pkgr/buildpacks").tap do |dir|
+        if ENV['HOME']
+          buildpack_dir = '~/.pkgr/buildpacks'
+        else
+          buildpack_dir = '/var/lib/jenkins/.pkgr/buildpacks' # jenkins hack
+        end
+
+        @buildpacks_cache_dir ||= File.expand_path(buildpack_dir).tap do |dir|
           FileUtils.mkdir_p(dir)
         end
       end
