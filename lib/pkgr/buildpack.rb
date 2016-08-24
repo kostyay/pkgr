@@ -42,7 +42,7 @@ module Pkgr
     end
 
     def compile(path, compile_cache_dir, compile_env_dir)
-      cmd = %{env -i PATH="$PATH"#{env} #{dir}/bin/compile "#{path}" "#{compile_cache_dir}" "#{compile_env_dir}" }
+      cmd = %{env -i HOME="$HOME" PATH="$PATH"#{env} #{dir}/bin/compile "#{path}" "#{compile_cache_dir}" "#{compile_env_dir}" }
       Pkgr.debug "Running #{cmd.inspect}"
 
       Dir.chdir(path) do
